@@ -3,7 +3,31 @@ import java.util.Arrays;
 public class Assignment01Q04 {
 
     public static int[] shiftArrayCyclic(int[] array, int move, char direction) {
-        // TODO: implement
+        if (array.length == 0)
+            return array;
+        if (move % array.length == 0)
+            return array;
+        int[] helper = new int[array.length];
+        for (int i = 0; i < array.length; i++)
+            helper[i] = array[i];
+
+        if((direction == 'R' && move > 0) || (direction == 'L' && move < 0))
+            return moveRight(array, Math.abs(move), helper);
+        else if ((direction == 'L' && move > 0) || (direction == 'R' && move < 0)) 
+            return moveLeft(array, Math.abs(move), helper);       
+        return array;
+    }
+
+    public static int[] moveLeft(int[] array, int move, int[] helper){
+        int remainder = move % array.length;
+        for (int i = 0; i < array.length; i++)
+            array[i] = helper[(i + remainder) % array.length];
+        return array;
+    }
+    public static int[] moveRight(int[] array, int move, int[] helper){
+        int remainder = move % array.length;
+        for (int i = 0; i < array.length; i++)
+            array[i] = helper[(array.length + i - remainder) % array.length];
         return array;
     }
 
@@ -11,7 +35,7 @@ public class Assignment01Q04 {
         System.out.println(Arrays.toString(
             shiftArrayCyclic(new int[]{1, 2, 3, 4, 5}, -1, 'R'))); // [2, 3, 4, 5, 1]
         System.out.println(Arrays.toString(
-            shiftArrayCyclic(new int[]{1, 2, 3, 4, 5}, 1, 'R'))); // [5, 1, 2, 3, 4]
+            shiftArrayCyclic(new int[]{1, 2, 3, 4, 5}, 1, 'R'))); // [4, 5, 1, 2, 3]
         System.out.println(Arrays.toString(
             shiftArrayCyclic(new int[]{1, 2, 3, 4, 5}, 1, 'r'))); // [1, 2, 3, 4, 5]
         System.out.println(Arrays.toString(
