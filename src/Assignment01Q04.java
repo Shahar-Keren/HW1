@@ -28,7 +28,7 @@ public class Assignment01Q04 {
         System.out.println(Arrays.toString(
             shiftArrayCyclic(new int[]{1, 2, 3, 4, 5}, -1, 'R'))); // [2, 3, 4, 5, 1]
         System.out.println(Arrays.toString(
-            shiftArrayCyclic(new int[]{1, 2, 3, 4, 5}, 1, 'R'))); // [4, 5, 1, 2, 3]
+            shiftArrayCyclic(new int[]{1, 2, 3, 4, 5}, 1, 'R'))); // [5, 1, 2, 3, 4]
         System.out.println(Arrays.toString(
             shiftArrayCyclic(new int[]{1, 2, 3, 4, 5}, 1, 'r'))); // [1, 2, 3, 4, 5]
         System.out.println(Arrays.toString(
